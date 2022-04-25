@@ -20,7 +20,7 @@ class BotExtensions:
     @staticmethod
     def get_values():
 
-        reply = "Доступные валюты (допускается ввод в произвольном регистре):"
+        reply = "Доступные валюты (допускается ввод в произвольном регистре):\n"
         for k in currency.values():
             reply += '\n' + '\t' + ' - '.join(k)
 
@@ -65,8 +65,8 @@ class BotExtensions:
         if base_r == '':
             raise APIException(f'"Не удалось обработать валюту {base}"' + extxt)
 
-        if quote == base:
-            raise APIException(f'"Введены одинаковые валюты {base} {base}"' + extxt)
+        if quote_r == base_r:
+            raise APIException(f'"Введены одинаковые валюты {quote} {base}"' + extxt)
 
         try:
             amount = abs(float(amount.replace(',', '.')))
@@ -76,7 +76,7 @@ class BotExtensions:
 
         total = BotExtensions.get_price(quote_r, base_r, amount)
 
-        reply = f'Цена {amount} {quote} в {base} = {round(total, 2)}'
+        reply = f'Цена {amount} {quote} в {base} = {round(total, 7)}'
 
         return reply
 
@@ -87,6 +87,7 @@ class BotExtensions:
 
         try:
             req = requests.get(url_get[0] + quote + url_get[1] + base)
+
         except:
             raise APIException(f'"Сервер не отвечает"\n'
                                f'Попробуйте повторить запрос позже.\n'
