@@ -77,7 +77,7 @@ class BotExtensions:
 
         total = BotExtensions.get_price(quote_r, base_r, amount)
 
-        reply = f'Цена {amount} {quote} в {base} = {round(total, 7)}'
+        reply = f'{amount} {quote} = {round(total, 7)} {base}'
 
         return reply
 
