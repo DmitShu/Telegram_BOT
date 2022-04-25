@@ -39,9 +39,3 @@ def do_convert(message: telebot.types.Message):
         bot.send_message(message.chat.id, reply)
 
 bot.polling(none_stop=True)
-
-# test area:
-# quote, base, amount = 'USD', 'EUR', 1
-# req = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={cur[quote]}&tsyms={cur[base]}')
-# repl = json.loads(req.content)[cur[base]]
-# print(repl)
