@@ -2,10 +2,11 @@ import requests
 import json
 from bot_config import currency, url_get
 
+# исключения
 class APIException(Exception):
     pass
 
-
+# класс с методами бота
 class BotExtensions:
 
     # вытаскиваем ключ бота из скрытого файла
