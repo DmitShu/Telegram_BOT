@@ -1,6 +1,6 @@
 import requests
 import json
-from bot_config import currency
+from bot_config import currency, url_get
 
 class APIException(Exception):
     pass
@@ -79,7 +79,8 @@ class Bot_Extensions:
     def get_price(quote: str, base: str, amount: float):
 
         try:
-            req = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={quote}&tsyms={base}')
+            # req = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={quote}&tsyms={base}')
+            req = requests.get(url_get[0] + quote + url_get[1] + base)
         except:
             raise APIException(f'"Сервер не отвечает"\n'
                                f'Попробуйте повторить запрос позже.\n'

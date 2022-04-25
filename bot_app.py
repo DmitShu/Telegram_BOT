@@ -38,4 +38,4 @@ def do_convert(message: telebot.types.Message):
     else:
         bot.send_message(message.chat.id, reply)
 
-bot.polling(none_stop=True)
+bot.polling()
