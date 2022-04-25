@@ -30,7 +30,7 @@ def try_convert(message: telebot.types.Message):
         reply = BotExtensions.process_data(message.text)
 
     except APIException as ex:
-        bot.send_message(message.chat.id, f'Ошибка:\n{ex}\n')
+        bot.send_message(message.chat.id, f'Ошибка пользователя:\n{ex}\n')
 
     except Exception as ex:
         bot.send_message(message.chat.id, f'Что-то пошло не так:\n{ex}\n'
