@@ -77,7 +77,7 @@ class BotExtensions:
 
         total = BotExtensions.get_price(quote_r, base_r, amount)
 
-        reply = f'{amount} {quote} = {round(total, 7)} {base}'
+        reply = f'{amount} {quote} = {round(total, 9)} {base}'
 
         return reply
 
