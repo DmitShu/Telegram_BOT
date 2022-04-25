@@ -34,7 +34,7 @@ def try_convert(message: telebot.types.Message):
 
     except Exception as ex:
         bot.send_message(message.chat.id, f'Что-то пошло не так:\n{ex}\n'
-                                          f'Попробуйте команду /help\n'
+                                          f'Для помощи используйте команду /help\n'
                                           f'Если ничего не помогло, обратитесь к разработчику.')
 
     else:

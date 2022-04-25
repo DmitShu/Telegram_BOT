@@ -2,7 +2,7 @@ import requests
 import json
 from bot_config import currency, url_get
 
-# исключения
+# исключения при вводе пользователя
 class APIException(Exception):
     pass
 
@@ -90,16 +90,14 @@ class BotExtensions:
             req = requests.get(url_get[0] + quote + url_get[1] + base)
 
         except:
-            raise APIException(f'"Сервер не отвечает"\n'
-                               f'Попробуйте повторить запрос позже.\n'
-                               f'Если не помогло, обратитесь к разработчику.\n')
+            raise Exception(f'"Сервер не отвечает"\n'
+                               f'Попробуйте повторить запрос позже.\n')
 
         try:
             total = json.loads(req.content)[base] * amount
 
         except:
-            raise APIException(f'"Неожиданный ответа сервера: {json.loads(req.content)}"\n'
-                               f'Попробуйте повторить запрос позже.\n'
-                               f'Если не помогло, обратитесь к разработчику.\n')
+            raise Exception(f'"Неожиданный ответа сервера: {json.loads(req.content)}"\n'
+                               f'Попробуйте повторить запрос позже.\n')
 
         return total
